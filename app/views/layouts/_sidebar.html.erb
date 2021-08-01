@@ -1,6 +1,11 @@
-<p>shinya8622</p>
-<p>shinya8622</p>
-<p>shinya8622</p>
-<p>shinya8622</p>
-<p>shinya8622</p>
-<p>shinya8622</p>
+<% if logged_in? %>
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title text-center"><%= current_user.name %></h3>
+      </div>
+      <div class="card-body">
+        <img class="rounded img-fluid d-block mx-auto" src="<%= gravatar_url(current_user, { size: 300 }) %>" alt="">
+      </div>
+    </div>
+<% else %>
+<% end %>
