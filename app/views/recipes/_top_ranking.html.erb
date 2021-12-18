@@ -1,0 +1,20 @@
+<div class="king-recipe-wrapper row">
+          <div class="king-recipe ml-4 col-md-6">
+          
+          <h3>現在の一番人気レシピ</h3>
+          <% best_recipes.each do |best_recipe| %>
+                    <%= link_to (image_tag "#{best_recipe.image.thumb_recipe.url}"), recipe_path(best_recipe.id) %>
+                    <p><%= link_to best_recipe.title,recipe_path(best_recipe) %></p>
+                    <p class='time'>完成時間<%= best_recipe.time %>分</p>
+                    <%= link_to user_path(best_recipe.user), class: "recipe-user-name" do %>投稿者　<%= best_recipe.user.name %>
+                    さん<% end %>
+          </div>   
+                    
+          <div class="king-side col-md-5">
+              <div class='description'>
+          　　 <h4><%= best_recipe.description %></h4>
+          　　</div>
+          </div>
+          
+          <% end %>
+</div>

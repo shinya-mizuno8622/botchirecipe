@@ -1,0 +1,30 @@
+<h3 class="text-success font-weight-bold pb-4"><%= @recipe.title  %>の材料を登録中</h3>
+
+<div class='process pb-4 mb-4 pl-4'>
+<p>レシピ工程</p>
+<%= @recipe.process %>
+</div>
+
+<div class='process mb-4 pl-4'>
+完成時間<%= @recipe.time %>分
+</div>
+
+
+<% @materials.each.each.with_index(1)  do |food,i| %>
+<div class='pb-4'>
+<span class='materials'><%= i %>.</span>
+<span class='materials'><%= food.name %></span>
+<span class='materials'><%= food.number %><%= food.unit %></span>
+<span class='materials'><%= food.cost %>円</span>
+    <% if current_user == @recipe.user %>
+    <%= link_to "材料を削除する", food_path(food.id), method: :delete, data: { confirm: "本当に削除していいですか？" } ,class: 'btn btn-danger btn-sm' %>
+    <% end %>
+</div>
+<% end %>
+
+
+
+
+<%= render 'recipes_foods/food_register', food: @food %>
+
+<h3 class='text-right'><%= link_to 'レシピの確認へ', recipe_path %></h3>

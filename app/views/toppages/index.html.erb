@@ -1,19 +1,52 @@
-<div class='row'>
-    <div class='col-md-3'>
-    </div>
-    <div class='col-md-9'>
-    <p>一人暮らし（ぼっち）のための、早く・安く作れて<br>なおかつ美味しいレシピを共有するサイトです。</p>
-    </div>    
-</div>
-    
-<div class='row'>
-        <div class='col-md-3'>
-          <%=render'layouts/sidebar' %>
+<div class="top-wrapper pt-2">
+    <div class='row'>
+        <div class='col-md-3 sidebar'>
+            <%=render'layouts/sidebar',user: @user %>
         </div>
-        <div class='col-md-9'>
+        <div class='offset-md-3 col-md-9'>
+            <div class="row">
+                <div class="col-md-9">
+                <h5>一人暮らし（ぼっち）のための、早く・安く作れて<br>なおかつ美味しいレシピを共有するサイトです。</h5>
+                </div>    
+                <div class='col-md-3'>
+                <h4><%= link_to new_recipe_path, class: "link" do %>レシピを投稿する
+                <i class="fas fa-receipt"></i><% end %></h4>
+                </div>
+            </div>
+            <!-- ここにトップページのコンテンツを書いていく！-->
+            
+            <!-- ハンバーガーメニューを作ってみたが実際には使用しなかった-->
+      <!--<div class="nav-wrapper"><!-- ②ナビゲーションメニュー -->
+      <!--  <nav class="header-nav">-->
+      <!--    <ul class="nav-list">-->
+      <!--      <li class="nav-item"><a href="https://crestadesign.org/">About</a></li>-->
+      <!--      <li class="nav-item"><a href="https://crestadesign.org/">News</a></li>-->
+      <!--      <li class="nav-item"><a href="https://crestadesign.org/">Access</a></li>-->
+      <!--    </ul>-->
+      <!--  </nav>-->
+      <!--</div>-->
 
-        <!-- ここにトップページのコンテンツを書いていく！-->
-        
+      <!--<div class="burger-btn"><!-- ③ハンバーガーボタン -->
+      <!--  <span class="bars">-->
+      <!--    <span class="bar bar_top"></span>-->
+      <!--    <span class="bar bar_mid"></span>-->
+      <!--    <span class="bar bar_bottom"></span>-->
+      <!--  </span>-->
+      <!--</div>-->
+      
+      <!--<script type="text/javascript">-->
+      <!--$('.burger-btn').on('click',function(){-->
+      <!--$('.burger-btn').toggleClass('close');-->
+      <!--$('.nav-wrapper').toggleClass('slide-in');-->
+      <!--$('body').toggleClass('noscroll');-->
+      <!--  });;-->
+       <!--</script>-->
+            
+            <%= render 'recipes/top_ranking', best_recipes: @best_recipes %>
+                        
+            <%= render 'recipes/top_fast', fast_recipes: @fast_recipes %>
+            
+            <%= render 'recipes/top_cheep', cheep_recipes: @cheep_recipes %>
         </div>
-      </div>
+    </div>
 </div>

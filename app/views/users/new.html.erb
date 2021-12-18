@@ -10,7 +10,7 @@
       
       <div class="form-group" >
         <%= f.label :name, 'ID' %>
-        <%= f.text_field :name, :placeholder => "aaa1234", class: 'form-control'  %>
+        <%= f.text_field :name,:placeholder => "aaaa1234", class: 'form-control'  %>
       </div>
 
       <div class="form-group">
@@ -27,6 +27,11 @@
         <%= f.label :password_confirmation, 'パスワード（確認用）' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
+      
+        <div class="field">
+          <%= f.label :image, '画像' %>
+          <%= f.file_field :image %>
+        </div>
 
       <%= f.submit '新規登録', class: 'btn btn-success btn-block' %>
     <% end %>

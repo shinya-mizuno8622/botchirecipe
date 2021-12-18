@@ -1,0 +1,8 @@
+<% @fast_recipes.each do |fast_recipe| %>
+<!-- 三つまで表示させるようにする！-->
+          <p><%= link_to fast_recipe.title,recipe_path(fast_recipe) %></p>
+          <p><%= fast_recipe.description %></p>
+          <p><%= fast_recipe.process %></p>
+          <p><%= fast_recipe.time %></p>
+          <%= image_tag fast_recipe.image.to_s %>
+  <% end %>

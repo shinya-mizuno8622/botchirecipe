@@ -1,0 +1,8 @@
+<% @cheep_recipes.each do |cheep_recipe| %>
+<!-- 三つまで表示させるようにする！-->
+          <p><%= link_to cheep_recipe.title,recipe_path(cheep_recipe) %></p>
+          <p><%= cheep_recipe.description %></p>
+          <p><%= cheep_recipe.process %></p>
+          <p><%= cheep_recipe.time %></p>
+          <%= image_tag cheep_recipe.image.to_s %>
+  <% end %>

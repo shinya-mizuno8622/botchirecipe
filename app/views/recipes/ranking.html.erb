@@ -1,0 +1,26 @@
+<div class='wrapper mt-2'>
+<div class='row mt-3'>
+     <div class='col-md-3 sidebar'>
+        <%=render'layouts/sidebar',user: @user %>
+     </div>
+     
+    <div class='offset-md-3 col-md-9'>
+        <div class='row mt-2'>
+        <h3 class='col-md-12'>レシピランキング(いいねが多い順）</h3>
+        <h4 class='offset-md-9 col-md-3'><%= link_to new_recipe_path, class: "link" do %>レシピを投稿する
+        <i class="fas fa-receipt"></i><% end %></h4>
+       
+        <% @best_recipes.each.each.with_index(1) do |best_recipe, i| %>
+        <div class='all-recipe col-md-4'>
+           <h4><%= i %>位</h4>
+           <%= link_to (image_tag "#{best_recipe.image.thumb_recipe.url}", {class: "photo"}), recipe_path(best_recipe.id) %>
+           <p><%= link_to best_recipe.title,recipe_path(best_recipe) %></p>
+           <p class='time'>完成時間<%= best_recipe.time %>分</p>
+           <%= link_to user_path(best_recipe.user), class: "recipe-user-name" do %>投稿者　<%= best_recipe.user.name %>
+           さん<% end %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+</div>
+</div>

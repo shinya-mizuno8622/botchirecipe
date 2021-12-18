@@ -1,0 +1,52 @@
+<% if logged_in? %>
+<div class="show-title">
+  <h3 class="text-success font-weight-bold"><%= @recipe.title %></h3>
+</div>
+<div class="row">
+  <div class="offset-md-1 col-md-4">
+    <%= image_tag @recipe.image.to_s %>
+  </div>
+  <div class="col-md-6 recipe-description">
+     
+      <h4 class="pb-4"><%= @recipe.description %></h4>
+      <h4 class='font-weight-bold'>材料</h4>
+      <% @materials.each.each.with_index(1) do |material,i| %>
+      <span class="materials"><%= i %>.</span>
+      <span class="materials"><%= material.name %></span>
+      <span class="materials"><%= material.cost %>円</span>
+      <span class="materials"><%= material.number %></span>
+      <span class="materials"><%= material.unit %></span><br>
+      <% end %>
+      <h4 class='font-weight-bold pt-4'>完成時間  <%= @recipe.time %>分</h4>
+      <%= link_to user_path(@recipe.user), class: "recipe-user-name" do %>投稿者　<%= @recipe.user.name %>さん<% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="offset-md-1 col-md-8 recipe-show-font">
+  <h4 class='font-weight-bold pt-4'>作り方</h4>
+  <%= simple_format(@recipe.process) %>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>
+
+<div class="row">
+ <div class="offset-md-1 col-md-1">
+ <%= render 'favorites/favorite_button', recipe: @recipe %>
+ </div>
+ <div class='recipe-show-font offset-md-6 col-md-4'>
+     <% if current_user == @recipe.user %>
+    <%= link_to "レシピを削除する", @recipe, method: :delete, data: { confirm: "本当に削除していいですか？" }, class: 'btn btn-danger btn-sm' %>
+    <%= link_to '材料登録画面へ',materials_recipe_path(@recipe) ,class: 'btn btn-success btn-sm' %>
+    <%= link_to 'このレシピを編集する', edit_recipe_path(@recipe) %>
+    <% end %>
+ </div>
+</div>
+
+<% else %>
+  <%= link_to 'ログインしてください', login_path, class: 'btn btn-lg btn-primary' %>
+<% end %>
+    
+
+

@@ -1,0 +1,14 @@
+<div class='cheep-wrapper row'>
+     <h3 class=' col-md-12'>コスパ良し！安くできるレシピ</h3>
+     <p class='col-md-12'><%= link_to (cheep_recipes_path) do %>材料費の安い順に全てのレシピを見る<i class="far fa-hand-point-left"></i><% end %></p>
+     <% cheep_recipes.each.each.with_index(1) do |cheep_recipe, i| %>
+     <div class='cheep-recipe col-md-4 mt-4'>
+          <h4>第<%= i %>位</h4>
+          <%= link_to (image_tag "#{cheep_recipe.image.thumb_recipe.url}", {class: "photo"}), recipe_path(cheep_recipe.id) %>
+          <p><%= link_to cheep_recipe.title,recipe_path(cheep_recipe) %></p>
+          <p class='time'>完成時間<%= cheep_recipe.time %>分</p>
+          <%= link_to user_path(cheep_recipe.user), class: "recipe-user-name" do %>投稿者　<%= cheep_recipe.user.name %>
+           さん<% end %>
+     </div>
+     <% end %>
+</div>

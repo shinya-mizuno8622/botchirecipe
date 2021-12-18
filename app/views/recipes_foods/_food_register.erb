@@ -1,0 +1,23 @@
+<%= form_with(model: @food, local: true) do |f| %>
+      <div class="form-group form-register">
+        <div class="row">
+          <%= f.label :name, '材料名⇨',class: 'col-md-1 text-center' %>
+          <%= f.text_area :name, class: 'form-control col-md-1'%>
+          
+          <%= f.label :number, '数⇨',class: 'col-md-1 text-center' %>
+          <%= f.text_area :number, class: 'form-control col-md-1',:placeholder => "半角数字" %>
+          
+          <%= f.label :unit, '単位⇨' ,class: 'col-md-1 text-center'%>
+          <%= f.text_area :unit, class: 'form-control col-md-1',:placeholder => "本、個、グラムなど" %>
+          
+          <%= f.label :cost, '費用⇨',class: 'col-md-1 text-center' %>
+          <%= f.text_area :cost, class: 'form-control col-md-1',:placeholder => "半角数字"%>円
+          <!--あとでimageも追加-->
+        </div>
+      </div>
+      
+      
+      <div class='text-center'>
+        <%= f.submit '材料をレシピに登録', class: 'btn btn-primary btn-lg' %>
+      </div>
+<% end %>

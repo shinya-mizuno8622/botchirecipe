@@ -1,0 +1,17 @@
+<% if current_user == @user %>
+  <%= form_with(model: @user, local: true) do |f| %>
+    <%= f.label :name, '名前' %>
+    <%= f.text_field :name %>
+    <%= f.label :email, 'メールアドレス' %>
+    <%= f.text_field :email %>
+  　<%= f.label :password, 'パスワード' %>
+    <%= f.text_field :password %>
+  　<%= f.label :password_confirmation, 'パスワード確認用' %>
+    <%= f.text_field :password_confirmation %>
+      <div class="field">
+      <%= f.label :image, '画像' %>
+      <%= f.file_field :image %>
+      </div>
+    <%= f.submit '投稿' %>
+  <% end %>
+<% end %>

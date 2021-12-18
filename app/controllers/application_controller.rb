@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+  
+  def counts(user)
+    if logged_in?
+    @count_recipes = user.recipes.count
+    @count_followings = user.followings.count
+    @count_followers = user.followers.count
+    end
+  end
 end

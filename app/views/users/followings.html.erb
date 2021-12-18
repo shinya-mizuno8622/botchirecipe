@@ -1,0 +1,43 @@
+<div class="row">
+  <aside class="col-sm-4">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title"><%= @user.name %></h3>
+      </div>
+      <div class="card-body text-center">
+        <% if @user.image? %>
+        <%= image_tag @user.image.thumb.url %>
+        <% else %>
+        <%= image_tag 'default.jpg', :size =>'200x200' %>
+        <% end %>        
+      </div>
+    <%= render 'relationships/follow_button', user: @user %>
+    </div>
+  </aside>
+  
+  
+ <% if current_user == @user %>
+  <div class="col-sm-8">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">レシピ<span class="badge badge-secondary"><%= @count_recipes %></span></a></li>
+      <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings  <span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+      <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge badge-secondary"><%= @count_followers %></span></a></li>
+    </ul>
+    <%= render 'users', users: @followings %>
+  </div>
+  <% else %>
+  <% if current_user.following?(@user) %>
+  <div class="col-sm-8">
+    <ul class="nav nav-tabs nav-justified mb-3">
+      <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">レシピ<span class="badge badge-secondary"><%= @count_recipes %></span></a></li>
+      <li class="nav-item"><a href="<%= followings_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>">Followings  <span class="badge badge-secondary"><%= @count_followings %></span></a></li>
+      <li class="nav-item"><a href="<%= followers_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>">Followers  <span class="badge badge-secondary"><%= @count_followers %></span></a></li>
+    </ul>
+    <%= render 'users', users: @followings %>
+  </div>
+  
+  <% else %>
+   <%= @user.name %>をフォローすると、<br><%= @user.name %>の作ったレシピ一覧、<%= @user.name %>がフォローしている人、<%= @user.name %>のフォロワーを閲覧できます。
+  <% end %>
+ <% end %>
+</div>

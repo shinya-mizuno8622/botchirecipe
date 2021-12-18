@@ -1,0 +1,14 @@
+<div class='fast-wrapper row'>
+     <h3 class=' col-md-12'>完成の早い時短レシピ</h3>
+     <p class='col-md-12'><%= link_to (fast_recipes_path) do %>時短順に全てのレシピを見る<i class="far fa-hand-point-left"></i><% end %></p>
+     <% fast_recipes.each.each.with_index(1) do |fast_recipe, i| %>
+     <div class='fast-recipe col-md-4 mt-4'>
+          <h4>第<%= i %>位</h4>
+          <%= link_to (image_tag "#{fast_recipe.image.thumb_recipe.url}", {class: "photo"}), recipe_path(fast_recipe.id) %>
+          <p><%= link_to fast_recipe.title,recipe_path(fast_recipe) %></p>
+          <p class='time'>完成時間<%= fast_recipe.time %>分</p>
+          <%= link_to user_path(fast_recipe.user), class: "recipe-user-name" do %>投稿者　<%= fast_recipe.user.name %>
+           さん<% end %>
+     </div>
+     <% end %>
+</div>

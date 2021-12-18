@@ -1,0 +1,58 @@
+<h1><%= @recipe.title %> のレシピ編集ページ</h1>
+
+      <%= form_with(model: @recipe, local: true) do |f| %>
+        <div class="form-group">
+          
+        <div class="row pb-2">
+          <div class='col-md-2 text-right'>
+          <%= f.label :title, '料理名' %>
+          </div>
+          <div class='col-md-3'>
+          <%= f.text_area :title ,class: 'form-control'%>
+          </div>
+        </div>
+          
+        <div class="row pb-2">
+          <div class='col-md-2 text-right'>
+          <%= f.label :description, '料理の紹介' %>
+          </div>
+          <div class='col-md-10'>
+          <%= f.text_area :description, class: 'form-control'%>
+          </div>
+        </div>
+        
+        <div class="row pb-2">
+          <div class='col-md-2 text-right'>
+          <%= f.label :process, 'レシピ（作る工程）' %>
+          </div>
+          <div class='col-md-10'>
+          <%= f.text_area :process,placeholder: process_placeholder, class: 'form-control',size: "40x20" %>
+          </div>
+        </div> 
+        
+        <div class="row pb-2">
+          <div class='col-md-2 text-right'>
+          <%= f.label :time, '料理完成までの時間' %>
+          </div>
+          <div class="col-md-1">
+          <%= f.text_area :time,:placeholder => "半角数字", class: 'form-control' ,size: "1x1" %>
+          </div>
+          <div　class="col-md-1 text-left">
+          分
+          </div>
+        </div>
+        
+        <div class="row pb-2">
+        <div class="col-md-3 field text-right">
+          <%= f.label :image, '画像' %>
+          <%= f.file_field :image %>
+        </div>
+        </div>
+  <div class='text-center'>
+　<%= f.submit 'レシピを更新する', class: 'btn btn-success btn-lg' %>
+  </div>
+<% end %>
+
+  <div class='text-right'>
+  <h4><%= link_to 'レシピ詳細へ戻る', recipe_path %></h4>
+  </div>
