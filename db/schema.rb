@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_17_140829) do
+ActiveRecord::Schema.define(version: 2021_12_18_050312) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_09_17_140829) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["food_id"], name: "index_recipes_foods_on_food_id"
+    t.index ["recipe_id", "food_id"], name: "index_recipes_foods_on_recipe_id_and_food_id", unique: true
     t.index ["recipe_id"], name: "index_recipes_foods_on_recipe_id"
   end
 
